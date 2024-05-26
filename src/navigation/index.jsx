@@ -6,24 +6,18 @@ import DeliveryMethods from "../pages/DeliveryMethods";
 import ProductDetail from "../pages/ProductDetail";
 
 const Navigation = ({ initialRoute, setRoute }) => {
-  const renderComponent = () => {
-    switch (initialRoute) {
-      case "home":
-        return <Home setRoute={setRoute} />;
-      case "about":
-        return <About />;
-      case "footer":
-        return <Footer />;
-      case "delivery":
-        return <DeliveryMethods />;
-      case "product":
-        return <ProductDetail setRoute={setRoute} />;
-      default:
-        return <Home setRoute={setRoute} />;
-    }
+  const pages = {
+    home: <Home setRoute={setRoute} />,
+    about: <About />,
+    footer: <Footer />,
+    productDetail: <ProductDetail />,
+    deliveryMethods: <DeliveryMethods />,
   };
 
-  return <>{renderComponent()}</>;
+ 
+  const page = pages[initialRoute] || pages.home;
+
+  return <>{page}</>;
 };
 
 export default Navigation;

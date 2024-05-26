@@ -2,9 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "./productDetail.css";
 
-
 const ProductDetail = () => {
   const [product, setProduct] = useState({});
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const getProduct = async () => {
     try {
@@ -12,7 +12,6 @@ const ProductDetail = () => {
       const response = await axios.get(
         `https://fakestoreapi.com/products/${productId}`
       );
-      console.log(response.data);
       setProduct(response.data);
     } catch (error) {
       console.log(error);
@@ -23,14 +22,13 @@ const ProductDetail = () => {
     getProduct();
   }, []);
 
-  
   return (
     <div className="container">
       <div className="header" onClick={() => setIsExpanded(!isExpanded)}>
         <img src={product.image} alt={product.title} className="imageIcon" />
         <h2 className="title">{product.title}</h2>
         <button className="expandButton">
-          {isExpanded ? "Collapse" : "Expand"}
+          {isExpanded ? "Add to Busket" : "Expand"}
         </button>
       </div>
       {isExpanded && (
