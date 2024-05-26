@@ -1,10 +1,9 @@
-
 import React from "react";
 import Home from "../pages/Home";
 import About from "../pages/About";
 import Footer from "../pages/Footer";
 import DeliveryMethods from "../pages/DeliveryMethods";
-import Products from "../components/Products";
+import ProductDetail from "../pages/ProductDetail";
 
 const Navigation = ({ initialRoute, setRoute }) => {
   const renderComponent = () => {
@@ -17,6 +16,8 @@ const Navigation = ({ initialRoute, setRoute }) => {
         return <Footer />;
       case "delivery":
         return <DeliveryMethods />;
+      case "product":
+        return <ProductDetail setRoute={setRoute} />;
       default:
         return <Home setRoute={setRoute} />;
     }

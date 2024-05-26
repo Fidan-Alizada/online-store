@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import "./productDetail.css";
+
 
 const ProductDetail = () => {
   const [product, setProduct] = useState({});
@@ -21,7 +23,29 @@ const ProductDetail = () => {
     getProduct();
   }, []);
 
-  return <div>product details sehifesindesiniz....</div>;
+  
+  return (
+    <div className="container">
+      <div className="header" onClick={() => setIsExpanded(!isExpanded)}>
+        <img src={product.image} alt={product.title} className="imageIcon" />
+        <h2 className="title">{product.title}</h2>
+        <button className="expandButton">
+          {isExpanded ? "Collapse" : "Expand"}
+        </button>
+      </div>
+      {isExpanded && (
+        <div className="detailsContainer">
+          <img src={product.image} alt={product.title} className="image" />
+          <p className="description">{product.description}</p>
+          <p className="price">Price: ${product.price}</p>
+          <p className="category">Category: {product.category}</p>
+          <p className="rating">
+            Rating: {product.rating?.rate} ({product.rating?.count} reviews)
+          </p>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default ProductDetail;
