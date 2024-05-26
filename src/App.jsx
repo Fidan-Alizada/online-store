@@ -4,6 +4,7 @@ import Navigation from "./navigation";
 import './App.css'; 
 const App = () => {
   const [route, setRoute] = useState("home");
+  console.log({route})
 
   return (
     <div className="app-container">

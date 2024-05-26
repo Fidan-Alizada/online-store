@@ -11,13 +11,13 @@ const Navigation = ({ initialRoute, setRoute }) => {
     about: <About />,
     footer: <Footer />,
     productDetail: <ProductDetail />,
-    deliveryMethods: <DeliveryMethods />,
+    delivery: <DeliveryMethods />,
   };
 
  
   const page = pages[initialRoute] || pages.home;
 
-  return <>{page}</>;
+  return page; //bunu sadece page yaza bilersen
 };
 
 export default Navigation;
